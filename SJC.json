@@ -282,7 +282,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"metric\" AS \"metric\", \"geohash\",id FROM \"GPS\" WHERE $timeFilter and metric <= 20000",
+          "query": "SELECT \"metric\" AS \"metric\", \"geohash\",id FROM \"GPS\" WHERE $timeFilter and metric <= 20000 and ( id =~ /$Airline/)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "table",
