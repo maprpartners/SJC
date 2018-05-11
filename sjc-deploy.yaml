@@ -1,0 +1,46 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: deploy-sjc
+  namespace: mapr-sjc
+spec:
+  selector:
+    matchLabels:
+      app: sjc
+      name: sjc
+  template:
+    metadata:
+      labels:
+         app: sjc
+         name: sjc
+    spec:
+      containers:
+      - name: k8-sjc
+        image: maprpartners/sjc
+        imagePullPolicy: Always
+        command:
+          - "/bin/bash"
+          - "-c"
+          - "/startup.sh"
+        env:
+        - name:  INFLUXDB_SERVER
+          value: "influxdbIP"
+        - name:  INFLUXDB_PORT
+          value: "8086"
+        - name:  MNT_DIR
+          value: "/sjc"
+        - name:  QUERY_INTERVAL
+          value: "60"
+        securityContext:
+          privileged: true
+          capabilities:
+            add:
+             - SYS_ADMIN
+             - SYS_RESOURCE
+        volumeMounts:
+        - mountPath: /sjc
+          name: maprflex
+      volumes:
+        - name: maprflex
+          persistentVolumeClaim:
+            claimName: sjcvolclaim

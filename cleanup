@@ -1,0 +1,3 @@
+kubectl delete namespace mapr-sjc
+kubectl delete pv `kubectl get pv | grep influx | awk '{print $1}' | xargs`
+kubectl delete sc influxdb-maprfs
