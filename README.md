@@ -1,4 +1,4 @@
-# Citibike Demo with MapR Data Fabric for K8s
+# SJC Demo with MapR Data Fabric for K8s
 
 Step 1: Create a MapR Sandbox
 
@@ -16,7 +16,7 @@ Step 3: Install Azure Cli Tool
 
     login to Sandbox, sudo to become root
 
-    curl -L https://raw.githubusercontent.com/maprpartners/citibike/master/config-azcli | bash
+    curl -L https://raw.githubusercontent.com/maprpartners/SJC/master/config-azcli | bash
 
     Follow the instructions to login to your Azure account
 
@@ -29,9 +29,9 @@ Step 4: Configure K8s client on MapR Sandbox
 
     login to the MapR Sandbox as root
 
-    git clone https://github.com/maprpartners/citibike.git
+    git clone https://github.com/maprpartners/SJC.git
 
-    cd citibike
+    cd SJC
 
     configure K8s
 
@@ -45,7 +45,7 @@ Step 5: Install MapR Data Fabric for K8s volume plugin
 
     kubectl get pod --all-namespaces to verify, you should see mapr-kdfplugin-xxx     daemon set running on each K8s slave
 
-Step 6: Deploy the citibike demo
+Step 6: Deploy the SJC demo
 
     bash run
 
