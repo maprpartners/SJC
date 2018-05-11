@@ -23,6 +23,12 @@
       "version": "0.0.21"
     },
     {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": "5.0.0"
+    },
+    {
       "type": "datasource",
       "id": "influxdb",
       "name": "InfluxDB",
@@ -52,92 +58,119 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1526063300368,
+  "iteration": 1526074412583,
   "links": [],
   "panels": [
     {
-      "circleMaxSize": "6",
-      "circleMinSize": "6",
-      "colors": [
-        "rgb(246, 238, 238)",
-        "rgb(255, 0, 0)",
-        "rgba(197, 0, 255, 0.75)",
-        "rgba(254, 0, 14, 0.24)",
-        "rgba(50, 172, 45, 0.97)",
-        "rgba(50, 172, 45, 0.97)"
-      ],
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": "${DS_SJC}",
-      "decimals": 0,
-      "esMetric": "Count",
+      "fill": 1,
       "gridPos": {
         "h": 11,
         "w": 12,
         "x": 0,
         "y": 0
       },
-      "hideEmpty": false,
-      "hideZero": false,
-      "id": 2,
-      "initialZoom": "8",
-      "interval": "",
+      "id": 9,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
       "links": [],
-      "locationData": "table",
-      "mapCenter": "custom",
-      "mapCenterLatitude": "37.193735",
-      "mapCenterLongitude": "-121.853204",
-      "maxDataPoints": 1,
-      "minSpan": 12,
-      "repeat": null,
-      "showLegend": true,
-      "stickyLabels": false,
-      "tableLabel": "id",
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
-          "alias": "",
-          "dsType": "influxdb",
-          "groupBy": [],
-          "measurement": "GPS",
+          "alias": "Altitude",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"metric\" AS \"metric\", \"geohash\",id FROM \"GPS\" WHERE $timeFilter and (id='$Flight_id')",
+          "query": "SELECT \"metric\" as \"Altitude\" FROM GPS WHERE $timeFilter and (id='$Flight_id')",
           "rawQuery": true,
           "refId": "A",
-          "resultFormat": "table",
+          "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "metric"
+                  "value"
                 ],
                 "type": "field"
               },
               {
-                "params": [
-                  "metric"
-                ],
-                "type": "alias"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "geohash"
-                ],
-                "type": "field"
+                "params": [],
+                "type": "mean"
               }
             ]
           ],
           "tags": []
         }
       ],
-      "thresholds": "0,3000,4000,5000,6000",
-      "title": "Flight  $Flight_id (Entire journey)",
-      "transparent": false,
-      "type": "grafana-worldmap-panel",
-      "unitPlural": "",
-      "unitSingle": "",
-      "unitSingular": "feet",
-      "valueName": "current"
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$Flight_id  Altitude",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "lengthft",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
     },
     {
       "columns": [],
@@ -232,57 +265,50 @@
       "type": "table"
     },
     {
-      "circleMaxSize": "3",
-      "circleMinSize": "3",
+      "circleMaxSize": "6",
+      "circleMinSize": "6",
       "colors": [
-        "rgb(255, 249, 249)",
-        "rgb(219, 0, 0)",
-        "rgba(198, 0, 220, 0.97)",
-        "rgba(28, 183, 0, 0.9)"
+        "rgb(246, 238, 238)",
+        "rgb(255, 0, 0)",
+        "rgba(197, 0, 255, 0.75)",
+        "rgba(254, 0, 14, 0.24)",
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(50, 172, 45, 0.97)"
       ],
       "datasource": "${DS_SJC}",
       "decimals": 0,
       "esMetric": "Count",
       "gridPos": {
-        "h": 13,
+        "h": 22,
         "w": 24,
         "x": 0,
         "y": 11
       },
       "hideEmpty": false,
       "hideZero": false,
-      "id": 4,
+      "id": 2,
       "initialZoom": "10",
+      "interval": "",
       "links": [],
       "locationData": "table",
       "mapCenter": "custom",
       "mapCenterLatitude": "37.193735",
       "mapCenterLongitude": "-121.853204",
       "maxDataPoints": 1,
+      "minSpan": 12,
       "repeat": null,
       "showLegend": true,
       "stickyLabels": false,
       "tableLabel": "id",
       "targets": [
         {
+          "alias": "",
           "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
+          "groupBy": [],
+          "measurement": "GPS",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"metric\" AS \"metric\", \"geohash\",id FROM \"GPS\" WHERE $timeFilter and metric <= 20000 and ( id =~ /$Airline/)",
+          "query": "SELECT \"metric\" AS \"metric\", \"geohash\",id FROM \"GPS\" WHERE $timeFilter and (id='$Flight_id')",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "table",
@@ -290,22 +316,32 @@
             [
               {
                 "params": [
-                  "value"
+                  "metric"
                 ],
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "mean"
+                "params": [
+                  "metric"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "geohash"
+                ],
+                "type": "field"
               }
             ]
           ],
           "tags": []
         }
       ],
-      "thresholds": "0,5000,7000",
-      "title": "SJC $Airline Arrivals (below 20k)",
-      "transparent": true,
+      "thresholds": "0,3000,4000,5000,6000",
+      "title": "Flight $Flight_id",
+      "transparent": false,
       "type": "grafana-worldmap-panel",
       "unitPlural": "",
       "unitSingle": "",
@@ -362,7 +398,7 @@
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -393,5 +429,5 @@
   "timezone": "browser",
   "title": "SJC Arrivals",
   "uid": "7eRHrOnmk",
-  "version": 2
+  "version": 5
 }

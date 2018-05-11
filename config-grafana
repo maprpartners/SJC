@@ -4,7 +4,7 @@ if [[ $jq -ne 1 ]]; then
 fi
 
 #Convert regular dashboard to importable dashboard
-sed s#\${DS_SJC}#SJC#g $1 | sed '1,37d' > /tmp/trim
+sed s#\${DS_SJC}#SJC#g $1 | sed '1,43d' > /tmp/trim
 echo {  \"dashboard\": { `cat /tmp/trim` } > /tmp/generic.json
 
 #Now import
