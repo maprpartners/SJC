@@ -4,7 +4,7 @@ if [[ $jq -ne 1 ]]; then
 fi
 
 #Convert regular dashboard to importable dashboard
-sed s#\${DS_GPS}#GPS#g $1 | sed '1,43d' > /tmp/trim
+sed s#\${DS_SJC}#SJC#g $1 | sed '1,37d' > /tmp/trim
 echo {  \"dashboard\": { `cat /tmp/trim` } > /tmp/generic.json
 
 #Now import
@@ -15,7 +15,7 @@ key=`curl -k -s -u admin:admin -X POST -H 'Content-Type: application/json' -d '{
 
 curl -k -s -X POST -H "Content-Type:application/json" -H "Authorization: Bearer $key" -d "
 {
-  \"Name\":\"GPS\",
+  \"Name\":\"SJC\",
   \"Type\":\"influxdb\",
   \"url\":\"http://$influxdbsvr:8086\",
   \"Access\":\"proxy\",
