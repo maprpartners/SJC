@@ -58,7 +58,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1526074412583,
+  "iteration": 1526090105723,
   "links": [],
   "panels": [
     {
@@ -69,8 +69,8 @@
       "datasource": "${DS_SJC}",
       "fill": 1,
       "gridPos": {
-        "h": 11,
-        "w": 12,
+        "h": 8,
+        "w": 13,
         "x": 0,
         "y": 0
       },
@@ -139,7 +139,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "$Flight_id  Altitude",
+      "title": "$Flight_id Altitude",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -177,9 +177,9 @@
       "datasource": "${DS_SJC}",
       "fontSize": "100%",
       "gridPos": {
-        "h": 11,
-        "w": 12,
-        "x": 12,
+        "h": 8,
+        "w": 11,
+        "x": 13,
         "y": 0
       },
       "id": 7,
@@ -265,8 +265,8 @@
       "type": "table"
     },
     {
-      "circleMaxSize": "6",
-      "circleMinSize": "6",
+      "circleMaxSize": "5",
+      "circleMinSize": "5",
       "colors": [
         "rgb(246, 238, 238)",
         "rgb(255, 0, 0)",
@@ -279,10 +279,10 @@
       "decimals": 0,
       "esMetric": "Count",
       "gridPos": {
-        "h": 22,
+        "h": 19,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 8
       },
       "hideEmpty": false,
       "hideZero": false,
@@ -308,7 +308,7 @@
           "measurement": "GPS",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"metric\" AS \"metric\", \"geohash\",id FROM \"GPS\" WHERE $timeFilter and (id='$Flight_id')",
+          "query": "SELECT \"metric\" AS \"metric\", \"geohash\",id FROM \"GPS\" WHERE $timeFilter  and airline =~ /$Airline/",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "table",
@@ -340,7 +340,7 @@
         }
       ],
       "thresholds": "0,3000,4000,5000,6000",
-      "title": "Flight $Flight_id",
+      "title": "All Flights for $Airline",
       "transparent": false,
       "type": "grafana-worldmap-panel",
       "unitPlural": "",
@@ -429,5 +429,5 @@
   "timezone": "browser",
   "title": "SJC Arrivals",
   "uid": "7eRHrOnmk",
-  "version": 5
+  "version": 3
 }
