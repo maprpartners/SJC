@@ -2,20 +2,20 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-   name: influxdb-maprfs
+   name: influxdbsjc-maprfs
    namespace: mapr-sjc
 provisioner: mapr.com/maprfs
 parameters:
-    restServers: "10.0.0.4:8443"
+    restServers: "changeme:8443"
     cluster: "mapr600"
-    cldbHosts: "10.0.0.4"
+    cldbHosts: "changeme"
     securityType: "secure"
     ticketSecretName: "mapr-ticket-secret"
     ticketSecretNamespace: "mapr-sjc"
     maprSecretName: "mapr-provisioner-secrets"
     maprSecretNamespace: "mapr-sjc"
     namePrefix: "influx"
-    mountPrefix: "/tmp"
+    mountPrefix: "/sjc"
     advisoryquota: "100M"
 #   quota: "500M"
 #   type: "rw"

@@ -1,7 +1,10 @@
 kubectl create namespace mapr-sjc
 
+ip=`ifconfig -a | grep eth0 -A 1 | grep inet | awk '{print $2}'`
 #storage class
-kubectl create -f storage_class.yaml
+cp storage_class.yaml /tmp
+sed -i s#changeme#$ip#g /tmp/storage_class.yaml
+kubectl create -f /tmp/storage_class.yaml
 
 #Influxdb
 maprticket=`cat /opt/mapr/conf/mapruserticket`
@@ -40,14 +43,14 @@ kubectl create -f grafana-deploy.yaml
 kubectl create -f grafana-svc.yaml
 while true;
 do
-output=`kubectl get svc -n mapr-sjc | grep grafana-svc |grep pending | wc -l`
+output=`kubectl get svc -n mapr-sjc -o wide | grep grafana-svc |grep pending | wc -l`
 if [[ $output -eq 1 ]]; then
  sleep 5
  t=`date`
  echo "Waiting for load balancer to become available, est. 5 ~ 10 minutes: $t"
 else
  sh config-grafana SJC.json
- ip=`kubectl get svc -n mapr-sjc | grep grafana-svc | awk '{print $4}'`
+ ip=`kubectl get svc -n mapr-sjc -o wide | grep grafana-svc | awk '{print $4}'`
  echo
  echo
  echo Now point your broswer at http://$ip:3000 to access Grafana UI, login: admin/admin
