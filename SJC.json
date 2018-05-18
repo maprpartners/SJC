@@ -137,7 +137,7 @@
         }
       ],
       "thresholds": "0,3000,4000,5000,6000",
-      "title": "All Flights for $Flight_id",
+      "title": "Flight path for $Flight_id",
       "transparent": false,
       "type": "grafana-worldmap-panel",
       "unitPlural": "",
@@ -423,7 +423,7 @@
         }
       ],
       "thresholds": "0,3000,4000,5000,6000",
-      "title": "All Flights for $Airline",
+      "title": "All Flight paths for $Airline",
       "transparent": false,
       "type": "grafana-worldmap-panel",
       "unitPlural": "",
