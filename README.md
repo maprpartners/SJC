@@ -2,3 +2,5 @@
 
 See this instruction to setup the demo: https://github.com/maprpartners/SJC/blob/master/AKSSJCDemo.pdf
 
+![Alt text](https://github.com/maprpartners/SJC/blob/master/sjc-grafana.png "NYC CitiBike")
+
